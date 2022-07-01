@@ -25,15 +25,15 @@ module.exports = {
   User:async (req, res) => {
     const { email } = req.params;
     let pool =await poolPromise();
-    pool.query(`SELECT * FROM Users WHERE Email ='?${email}`)
+    pool.query(`SELECT * FROM Users WHERE Email ='${email}'`)
     .then((results)=>{
-      console.log(results.recodeset);
+      console.log(results.recordset);
       results ? 
       res.status(200).json({
         status: 200,
         success: true,
         message: "success",
-        result:results.recodeset,
+        result:results.recordset
       })
       : res.status(404).json({
         status: 404,
