@@ -46,18 +46,19 @@ module.exports = {
     },
   
 
-login: async (res,req)=>{
-const {password,email} =req.body
+login: async (req,res)=>{
+const {Password,email} =req.body
 let pool = await poolPromise();
-pool.query(`SELECT  Email,Passwords FROM Users WHERE Email ='${email}'`)
+pool.query(`SELECT * FROM Users WHERE Email ='${email}'`)
 .then((results)=>{
+  // console.log(results.recordset);
   if (results.recordset.length > 0) {
-  if (results.recordset[0].passwords === Password){
+  if (results.recordset[0].Passwords === Password){
   return res.json({
     status:200,
     success:true,
     message: "logged In",
-    result: user
+    result:results.recordset
   });
 }else{
   res.status(404).json({

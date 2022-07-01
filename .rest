@@ -11,7 +11,14 @@ GET http://localhost:3000/User/marynduta@gmail.com
 
 ###
 POST http://localhost:3000/login
+Content-Type: application/json
 
+{
+    "email":"ostroder2@xinhuanet.com",
+    "Password":"uehSLnl"
+}
+
+###
 POST http://localhost:3000/create
 Content-Type: application/json
 
